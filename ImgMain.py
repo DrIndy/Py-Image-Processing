@@ -48,7 +48,7 @@ while True:
 		print("\nError: Invalid File Name\n")
 		continue
     print("What do you want to do with the image?")
-    choice = int(input("1) Open from file \n2) Rotate \n3) Smooth \n5) Write to file\n"))
+    choice = int(input("1) Open from file \n2) Convert to Graysacle \n3) Smooth \n5) Write to file\n"))
 
 
 '''
