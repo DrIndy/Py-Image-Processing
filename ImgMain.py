@@ -29,14 +29,20 @@ import cv2
 choice = 1
 while True:
     if choice == 1: 
-        try: img = cv2.imread(input("Enter the file name of the image to be procesed:\n"),1)
-        except: 
+        img = cv2.imread(input("Enter the file name of the image to be procesed:\n"),1)
+        if type(img) == none: 
             print("\nError: File Does Not Exist\n")
             continue
     elif choice == 2:
 	img = Grey(img)
 	print("\nImage Conveted to Greyscale\n")
     elif choice == 3:
+	pass
+	#impliment Rotation Here
+    elif choice == 4:
+	pass
+	#impliment Mirroring here
+    elif choice == 5:
         if img.shape[2] == 1: img = fltr.GausSmooth(img)
         else: img = fltr.colorGausSmooth(img)
 	print("\nImage Smoothed\n")
@@ -48,7 +54,7 @@ while True:
 		print("\nError: Invalid File Name\n")
 		continue
     print("What do you want to do with the image?")
-    choice = int(input("1) Open from file \n2) Convert to Graysacle \n3) Smooth \n5) Write to file\n"))
+    choice = int(input("1) Open from file \n2) Convert to Graysacle \n3) Rotate \n4) Mirror \n5) Smooth \nAny other to Write to File \n"))
 
 
 '''
