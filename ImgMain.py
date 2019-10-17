@@ -35,6 +35,7 @@ while True:
             continue
     elif choice == 2:
 	img = Grey(img)
+	print("Image Conveted to Greyscale")
     elif choice == 3:
         if img.shape[2] == 1: img = fltr.GausSmooth(img)
         else: img = fltr.colorGausSmooth(img)
