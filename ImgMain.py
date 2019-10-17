@@ -39,6 +39,7 @@ while True:
         if img.shape[2] == 1: img = fltr.GausSmooth(img)
         else: img = fltr.colorGausSmooth(img)
     else:
+	cv2.imwrite(imput("Enter The file name for the new image:\n"), img)
         break
     print("What do you want to do with the image?")
     print("1) Open from file \n2) Rotate \n3) Smooth \n5) Write to file")
