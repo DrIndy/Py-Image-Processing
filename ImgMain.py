@@ -35,12 +35,13 @@ while True:
             continue
     elif choice == 2:
 	img = Grey(img)
-	print("Image Conveted to Greyscale")
+	print("\nImage Conveted to Greyscale\n")
     elif choice == 3:
         if img.shape[2] == 1: img = fltr.GausSmooth(img)
         else: img = fltr.colorGausSmooth(img)
+	print("\nImage Smoothed\n")
     else:
-	cv2.imwrite(imput("Enter The file name for the new image:\n"), img)
+	cv2.imwrite(input("Enter The file name for the new image:\n"), img)
         break
     print("What do you want to do with the image?")
     choice = int(input("1) Open from file \n2) Rotate \n3) Smooth \n5) Write to file\n"))
