@@ -23,6 +23,7 @@ Contributor:    Name, login@purdue [repeat for each]
 ===============================================================================
 '''
 import ImgFilters as fltr
+from ToGreyscale import Grey
 import cv2
 
 choice = 1
@@ -32,7 +33,8 @@ while True:
         except: 
             print("\nError: File Does Not Exist\n")
             continue
-    elif choice == 2: pass
+    elif choice == 2:
+	img = Grey(img)
     elif choice == 3:
         if img.shape[2] == 1: img = fltr.GausSmooth(img)
         else: img = fltr.colorGausSmooth(img)
