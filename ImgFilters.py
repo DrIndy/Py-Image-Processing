@@ -25,6 +25,7 @@ Contributor:    Name, login@purdue [repeat for each]
 import numpy as np
 
 def square(img, a):
+    #pulls out the square around 
     b = np.ndarray((9))
     try:
         b[0:3] = img[a[0]-1:a[0]+1][a[0]-1]
@@ -54,6 +55,56 @@ def colorGausSmooth(img):
     img[:,:,2] = GausSmooth(img[:,:,2])
     return img
 
+def HorizDeriv(img):
+    nwImg = np.ndarray(img.shape)
+    b = np.ndarray((9,2))
+    for i in range(0,img.shape[0]):
+        for j in range(0, img.shape[1]):
+            b[:,0], b[:,1] = square(img, (i,j)), [-1,-2,-1,0,0,0,1,2,1]
+            s = 0
+            for k in b: s += k[0]*k[1]
+            nwImg[i][j] = s
+    return nwImg
+
+def colorHorizDeriv(img):
+    img[:,:,0] = HorizDeriv(img[:,:,0])
+    img[:,:,1] = HorizDeriv(img[:,:,1])
+    img[:,:,2] = HorizDeriv(img[:,:,2])
+    return img
+
+def VertDeriv(img):
+    nwImg = np.ndarray(img.shape)
+    b = np.ndarray((9,2))
+    for i in range(0,img.shape[0]):
+        for j in range(0, img.shape[1]):
+            b[:,0], b[:,1] = square(img, (i,j)), [-1,0,1,-2,0,2,1,0,1]
+            s = 0
+            for k in b: s += k[0]*k[1]
+            nwImg[i][j] = s
+    return nwImg
+
+def colorVertDeriv(img):
+    img[:,:,0] = VertDeriv(img[:,:,0])
+    img[:,:,1] = VertDeriv(img[:,:,1])
+    img[:,:,2] = VertDeriv(img[:,:,2])
+    return img
+
+def Sharp(img):
+    nwImg = np.ndarray(img.shape)
+    b = np.ndarray((9,2))
+    for i in range(0,img.shape[0]):
+        for j in range(0, img.shape[1]):
+            b[:,0], b[:,1] = square(img, (i,j)), [0,-1,0,-1,5,-1,0,-1,0]
+            s = 0
+            for k in b: s += k[0]*k[1]
+            nwImg[i][j] = s
+    return nwImg
+
+def colorSharp(img):
+    img[:,:,0] = Sharp(img[:,:,0])
+    img[:,:,1] = Sharp(img[:,:,1])
+    img[:,:,2] = Sharp(img[:,:,2])
+    return img
 
 '''
 ===============================================================================
