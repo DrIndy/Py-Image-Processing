@@ -41,8 +41,12 @@ while True:
         else: img = fltr.colorGausSmooth(img)
 	print("\nImage Smoothed\n")
     else:
-	cv2.imwrite(input("Enter The file name for the new image:\n"), img)
-        break
+	try:
+		cv2.imwrite(input("Enter The file name for the new image:\n"), img)
+        	break
+	except: 
+		print("\nError: Invalid File Name\n")
+		continue
     print("What do you want to do with the image?")
     choice = int(input("1) Open from file \n2) Rotate \n3) Smooth \n5) Write to file\n"))
 
