@@ -38,75 +38,30 @@ def square(img, a):
                 except: b[3*i+j] = img[a[0]][a[1]]
     return b
 
-def GausSmooth(img):
+def ImgFltr(img, fltr = [4,9,4,9,36,9,4,9,4]):
     nwImg = np.ndarray(img.shape)
     b = np.ndarray((9,2))
     for i in range(0,img.shape[0]):
         for j in range(0, img.shape[1]):
-            b[:,0], b[:,1] = square(img, (i,j)), [4,9,4,9,36,9,4,9,4]
+            b[:,0], b[:,1] = square(img, (i,j)), fltr
             s = 0
             for k in b: s += k[0]*k[1]
             nwImg[i][j] = s//88
     return nwImg
 
-def colorGausSmooth(img):
-    img[:,:,0] = GausSmooth(img[:,:,0])
-    img[:,:,1] = GausSmooth(img[:,:,1])
-    img[:,:,2] = GausSmooth(img[:,:,2])
-    return img
-
-def HorizDeriv(img):
-    nwImg = np.ndarray(img.shape)
-    b = np.ndarray((9,2))
-    for i in range(0,img.shape[0]):
-        for j in range(0, img.shape[1]):
-            b[:,0], b[:,1] = square(img, (i,j)), [-1,-2,-1,0,0,0,1,2,1]
-            s = 0
-            for k in b: s += k[0]*k[1]
-            nwImg[i][j] = s
-    return nwImg
-
-def colorHorizDeriv(img):
-    img[:,:,0] = HorizDeriv(img[:,:,0])
-    img[:,:,1] = HorizDeriv(img[:,:,1])
-    img[:,:,2] = HorizDeriv(img[:,:,2])
-    return img
-
-def VertDeriv(img):
-    nwImg = np.ndarray(img.shape)
-    b = np.ndarray((9,2))
-    for i in range(0,img.shape[0]):
-        for j in range(0, img.shape[1]):
-            b[:,0], b[:,1] = square(img, (i,j)), [-1,0,1,-2,0,2,1,0,1]
-            s = 0
-            for k in b: s += k[0]*k[1]
-            nwImg[i][j] = s
-    return nwImg
-
-def colorVertDeriv(img):
-    img[:,:,0] = VertDeriv(img[:,:,0])
-    img[:,:,1] = VertDeriv(img[:,:,1])
-    img[:,:,2] = VertDeriv(img[:,:,2])
-    return img
-
-def Sharp(img):
-    nwImg = np.ndarray(img.shape)
-    b = np.ndarray((9,2))
-    for i in range(0,img.shape[0]):
-        for j in range(0, img.shape[1]):
-            b[:,0], b[:,1] = square(img, (i,j)), [0,-1,0,-1,5,-1,0,-1,0]
-            s = 0
-            for k in b: s += k[0]*k[1]
-            nwImg[i][j] = s
-    return nwImg
-
-def colorSharp(img):
-    img[:,:,0] = Sharp(img[:,:,0])
-    img[:,:,1] = Sharp(img[:,:,1])
-    img[:,:,2] = Sharp(img[:,:,2])
+def ColorFltr(img, fltr = [4,9,4,9,36,9,4,9,4]):
+    img[:,:,0] = ImgFltr(img[:,:,0], fltr)
+    try:
+        img[:,:,1] = ImgFltr(img[:,:,1], fltr)
+        img[:,:,2] = ImgFltr(img[:,:,2], fltr)
+    except: pass
     return img
 
 '''
+Horizontal Derivative = [-1,-2,-1,0,0,0,1,2,1]
+Vertical Derivative   = [-1,0,1,-2,0,2,1,0,1]
+Sharpen               = [0,-1,0,-1,5,-1,0,-1,0]
+
 ===============================================================================
 ACADEMIC INTEGRITY STATEMENT
     I have not used source code obtained from any other unauthorized
