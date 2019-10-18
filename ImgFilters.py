@@ -24,37 +24,32 @@ Contributor:    Name, login@purdue [repeat for each]
 '''
 import numpy as np
 
-def square(img, a):
-    #pulls out the square around 
-    b = np.ndarray((9))
-    try:
-        b[0:3] = img[a[0]-1:a[0]+1][a[0]-1]
-        b[4:6] = img[a[0]-1:a[0]+1][a[0]]
-        b[7:9] = img[a[0]-1:a[0]+1][a[0]+1]
-    except:
-        for i in range(0,3):
-            for j in range(0,3):
-                try:    b[3*i+j] = img[i+a[0]-1][j+a[1]-1]
-                except: b[3*i+j] = img[a[0]][a[1]]
-    return b
-
 def ImgFltr(img, fltr = [4,9,4,9,36,9,4,9,4]):
     nwImg = np.ndarray(img.shape)
     b = np.ndarray((9,2))
     for i in range(0,img.shape[0]):
         for j in range(0, img.shape[1]):
-            b[:,0], b[:,1] = square(img, (i,j)), fltr
+            try:
+                b[0:3][0] = img[i-1:i+1][j-1]
+                b[4:6][0] = img[i-1:i+1][j]
+                b[7:9][0] = img[i-1:i+1][j+1]
+            except:
+                for x in range(0,3):
+                    for y in range(0,3):
+                        try:    b[3*x+y][0] = img[x+i-1][y+j-1]
+                        except: b[3*x+y][0] = img[x][y]
+            b[:,1] = fltr
             s = 0
             for k in b: s += k[0]*k[1]
-            nwImg[i][j] = s//88
+            nwImg[i][j] = s//sum(fltr)
     return nwImg
 
 def ColorFltr(img, fltr = [4,9,4,9,36,9,4,9,4]):
-    img[:,:,0] = ImgFltr(img[:,:,0], fltr)
     try:
+        img[:,:,0] = ImgFltr(img[:,:,0], fltr)
         img[:,:,1] = ImgFltr(img[:,:,1], fltr)
         img[:,:,2] = ImgFltr(img[:,:,2], fltr)
-    except: pass
+    except: img = ImgFltr(img, fltr)
     return img
 
 '''

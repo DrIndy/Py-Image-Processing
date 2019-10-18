@@ -3,18 +3,14 @@
 """
 Created on Tue Oct 15 15:08:01 2019
 
-@author: Dr_Indy
+@author: Dr_Indy (Kai Wilson)
 """
 
 import numpy as np
-import cv2
 
-def Grey(BRG):
-    return(((BRG[0]*.7)+(BRG[1]*.1)+(BRG[2])*.6)/1.5)
-image = cv2.imread('wow.jpg')
-a = image.shape
-greyscale = np.zeros((a[0],a[1]))
-for i in range(0,a[0]):
-    for j in range(0,a[1]):
-        greyscale[i][j] = Grey(image[i][j])
-cv2.imwrite('greyscale.jpg',greyscale)
+def Grey(image):
+    greyscale = np.zeros((image.shape[0],image.shape[1]))
+    for i in range(0,image.shape[0]):
+        for j in range(0,image.shape[1]):
+            greyscale[i][j] = ((image[i][j][0]*.7)+(image[i][j][1]*.1)+(image[i][j][2]*.6))//1.5
+    return greyscale
