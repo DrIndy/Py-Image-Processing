@@ -26,10 +26,12 @@ import numpy as np
 
 def ImgFltr(img, fltr = [4,9,4,9,36,9,4,9,4]):
     nwImg = np.ndarray(img.shape) # Create the new image to copy into
-    b = np.ndarray((9,2)) # Create the aray of pixels ot be evaluated
+    b = np.ndarray((9,2)) # Create the aray of pixels to be evaluated
+    smfltr = sum(fltr)
+    if smfltr == 0: smfltr = 1
     for i in range(0,img.shape[0]): # Itterate through every pixel
         for j in range(0, img.shape[1]):
-            try: # Coppy the square around the current pixel
+            try: # Copy the square around the current pixel
                 b[0:3][0] = img[i-1:i+1][j-1]
                 b[4:6][0] = img[i-1:i+1][j]
                 b[7:9][0] = img[i-1:i+1][j+1]
@@ -41,7 +43,7 @@ def ImgFltr(img, fltr = [4,9,4,9,36,9,4,9,4]):
             b[:,1] = fltr # add the filter weights to the aray of pixels
             s = 0
             for k in b: s += k[0]*k[1] # Multiply the pixels by the weights and sum them
-            nwImg[i][j] = s//sum(fltr) # devide by hte filter sum and put the value in the new image
+            nwImg[i][j] = s//smfltr # divide by the filter sum and put the value in the new image
     return nwImg
 
 
