@@ -25,32 +25,25 @@ Contributor:    Name, login@purdue [repeat for each]
 import numpy as np
 
 def ImgFltr(img, fltr = [4,9,4,9,36,9,4,9,4]):
-    nwImg = np.ndarray(img.shape)
-    b = np.ndarray((9,2))
-    for i in range(0,img.shape[0]):
+    nwImg = np.ndarray(img.shape) # Create the new image to copy into
+    b = np.ndarray((9,2)) # Create the aray of pixels ot be evaluated
+    for i in range(0,img.shape[0]): # Itterate through every pixel
         for j in range(0, img.shape[1]):
-            try:
+            try: # Coppy the square around the current pixel
                 b[0:3][0] = img[i-1:i+1][j-1]
                 b[4:6][0] = img[i-1:i+1][j]
                 b[7:9][0] = img[i-1:i+1][j+1]
-            except:
+            except: # fill in "Manualy" if it hits an edge
                 for x in range(0,3):
                     for y in range(0,3):
                         try:    b[3*x+y][0] = img[x+i-1][y+j-1]
-                        except: b[3*x+y][0] = img[x][y]
-            b[:,1] = fltr
+                        except: b[3*x+y][0] = img[i][j] # pads teh edge by copying the current pixel into the edges
+            b[:,1] = fltr # add the filter weights to the aray of pixels
             s = 0
-            for k in b: s += k[0]*k[1]
-            nwImg[i][j] = s//sum(fltr)
+            for k in b: s += k[0]*k[1] # Multiply the pixels by the weights and sum them
+            nwImg[i][j] = s//sum(fltr) # devide by hte filter sum and put the value in the new image
     return nwImg
 
-def ColorFltr(img, fltr = [4,9,4,9,36,9,4,9,4]):
-    try:
-        img[:,:,0] = ImgFltr(img[:,:,0], fltr)
-        img[:,:,1] = ImgFltr(img[:,:,1], fltr)
-        img[:,:,2] = ImgFltr(img[:,:,2], fltr)
-    except: img = ImgFltr(img, fltr)
-    return img
 
 '''
 Horizontal Derivative = [-1,-2,-1,0,0,0,1,2,1]
