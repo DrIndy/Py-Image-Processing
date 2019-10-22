@@ -26,7 +26,6 @@ Contributor:    Kai Wilson, login@purdue
 from ImgFilters import ImgFltr # File by Mattew Glimcher
 from ToGrayscale import Grey # File by Kai Wilson
 from numpy import ndarray
-from untitled0 import Rot90, Rot180, Rot270, Mirror # File by Chase Wienstien
 import cv2
 
 choice = 1 #makes sure that chosing an immage is the first part of the program
