@@ -26,7 +26,8 @@ Contributor:    Name, login@purdue [repeat for each]
 import numpy as np
 
 def rot(img):
-   nwImg = np.ndarray((img.shape[1],img.shape[0],img.shape[2]))
+   try: nwImg = np.ndarray((img.shape[1],img.shape[0],img.shape[2]))
+   except: nwImg = np.ndarray((img.shape[1], img.shape[0]))
    for i in range(0, img.shape[0]):
        for j in range(0, img.shape[1]):
            nwImg[-j-1][i] = img[i][j]
