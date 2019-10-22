@@ -22,7 +22,7 @@ Contributor:    Name, login@purdue [repeat for each]
 	have to list that person as a contributor here as well.
 ===============================================================================
 '''
-import cv2
+#import cv2
 import numpy as np
 
 def rot(img):
@@ -38,7 +38,7 @@ def mirr(img):
        for j in range(0, img.shape[1]):
            nwImg[-i-1][j] = img[i][j]
    return nwImg
-
+'''
 img = input("WHAT IMAGE DO YOU WISH TO DISTORT? ")
 final = input("WHAT IS THE NEW NAME OF THINE CREATION WITH EXTENTION? ")
 Distortion = input("DO YOU WISH TO MIRROR OR ROTATE YOUR IMAGE? ").lower()
@@ -56,7 +56,7 @@ elif Distortion == "mirror":
 else:
     print("THIS COMMAND IS NOT RECOGNIZED")
 cv2.imwrite(final, image)
-    
+    '''
 
     
             

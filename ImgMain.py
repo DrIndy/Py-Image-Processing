@@ -26,6 +26,7 @@ Contributor:    Kai Wilson, login@purdue
 from ImgFilters import ImgFltr # File by Mattew Glimcher
 from ToGrayscale import Grey # File by Kai Wilson
 from numpy import ndarray
+from Rotate_and_Mirror import rot, mirr
 import cv2
 
 choice = 1 #makes sure that chosing an immage is the first part of the program
@@ -34,6 +35,7 @@ while True: #Loops thorugh the menu for multiple opperations until the image is 
         img = cv2.imread(input("Enter the file name of the image to be procesed:\n"),1)
         if type(img) != ndarray: #check to make sure you actualy got an immage
             print("\nError: File Does Not Exist\n")
+            if input("End program? ([y/n]) ") == "y": break
             continue # go back to the top and try again
     elif choice == 2: # Convert to Greyscale, nothing fancy here
         img = Grey(img)
@@ -46,14 +48,12 @@ while True: #Loops thorugh the menu for multiple opperations until the image is 
                 break
             except: print("\nPlease enter a number")
         #takes a rotation value and rounds in case you hit a nearby key by accident
-        '''
-        Image Rotation Here
-        '''
+        if r == 1: img = rot(img)
+        elif r == 2: img = rot(rot(img))
+        elif r == 3: img = rot(rot(rot(img)))
         print(f"\nImage Rotated {r*90} degrees\n") # Tells you how far the image was rotated as confirmation
-    elif choice == 4: #Mirrors the Image Horizontaly
-        '''
-        Image Mirroring Here
-        '''
+    elif choice == 4: #Mirrors the Image Verticaly
+        img = mirr(img)
         print("\nImage Mirrored\n") # Confirms the Image was Mirrored
     elif choice == 5: #Filters the Image
         print("Would you like to:\n1)Smooth\n2)Sharpen\n3)Take Vertical Derivative\n4)Horizontal Derivative")
@@ -86,7 +86,9 @@ while True: #Loops thorugh the menu for multiple opperations until the image is 
     if choice <= 6: # asks you what you want to do next if you previous choice was valid
         print("What do you want to do with the image?")
         print("1) Open from file \n2) Convert to Graysacle \n3) Rotate \n4) Mirror \n5) Filter \n6) Write to File")
-    else: print("\nPlease enter a number from 1-6")
+    else: 
+        if input("End program? ([y/n]) ") == "y": break
+        print("\nPlease enter a number from 1-6")
     while True:
         try: 
             choice = int(input()) # takes in the user's choice
