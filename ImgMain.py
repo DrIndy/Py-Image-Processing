@@ -64,8 +64,8 @@ while True: #Loops thorugh the menu for multiple opperations until the image is 
             except: print("\nPlease enter a number")
         if f == 1: fltr = [4,9,4,9,36,9,4,9,4] # Gausian Smoothing Filter
         elif f == 2: fltr = [0,-1,0,-1,5,-1,0,-1,0] # Sharpening Filter
-        elif f == 3: fltr = [-1,-2,-1,0,0,0,1,2,1] # Vertical Derivative Filter
-        elif f == 4: fltr = [-1,0,1,-2,0,2,1,0,1] # Horizontal Derivative Filter
+        elif f == 3: fltr = [-1,0,1,-2,0,2,1,0,1] # Vertical Derivative Filter
+        elif f == 4: fltr = [-1,-2,-1,0,0,0,1,2,1] # Horizontal Derivative Filter
         else: 
             print("\nPlease enter a number from 1-4")
             continue # Go back to the top and try again

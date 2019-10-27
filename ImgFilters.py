@@ -24,33 +24,36 @@ Contributor:    Name, login@purdue [repeat for each]
 '''
 import numpy as np
 
-def ImgFltr(img, fltr = [4,9,4,9,36,9,4,9,4]):
+def ImgFltr(img, fltr):
     nwImg = np.ndarray(img.shape) # Create the new image to copy into
-    b = np.ndarray((9,2)) # Create the aray of pixels to be evaluated
+    b = np.zeros((9,2)) # Create the aray of pixels to be evaluated
     smfltr = sum(fltr)
     if smfltr == 0: smfltr = 1
     for i in range(0,img.shape[0]): # Itterate through every pixel
         for j in range(0, img.shape[1]):
             try: # Copy the square around the current pixel
-                b[0:3][0] = img[i-1:i+1][j-1]
-                b[4:6][0] = img[i-1:i+1][j]
-                b[7:9][0] = img[i-1:i+1][j+1]
+                b[0:3,0] = img[(i-1):(i+2),j-1]
+                b[3:6,0] = img[(i-1):(i+2),j]
+                b[6:,0] = img[(i-1):(i+2),j+1]
             except: # fill in "Manualy" if it hits an edge
                 for x in range(0,3):
                     for y in range(0,3):
-                        try:    b[3*x+y][0] = img[x+i-1][y+j-1]
-                        except: b[3*x+y][0] = img[i][j] # pads teh edge by copying the current pixel into the edges
+                        try:    b[(3*x)+y,0] = img[x+i-1,y+j-1]
+                        except: b[(3*x)+y,0] = img[i,j] # pads the edge by copying the current pixel into the edges
             b[:,1] = fltr # add the filter weights to the aray of pixels
             s = 0
             for k in b: s += k[0]*k[1] # Multiply the pixels by the weights and sum them
-            nwImg[i][j] = s//smfltr # divide by the filter sum and put the value in the new image
+            nwImg[i,j] = abs(s//smfltr) # divide by the filter sum and put the value in the new image
     return nwImg
 
 
+
+
 '''
-Horizontal Derivative = [-1,-2,-1,0,0,0,1,2,1]
-Vertical Derivative   = [-1,0,1,-2,0,2,1,0,1]
-Sharpen               = [0,-1,0,-1,5,-1,0,-1,0]
+Vertical Derivative     = [-1,-2,-1, 0, 0, 0, 1, 2, 1]
+Horizontal Derivative   = [-1, 0, 1,-2, 0, 2, 1, 0, 1]
+Sharpen                 = [ 0,-1, 0,-1, 5,-1, 0,-1, 0]
+Smooth                  = [ 4, 9, 4, 9,36, 9, 4, 9, 4]
 
 ===============================================================================
 ACADEMIC INTEGRITY STATEMENT
