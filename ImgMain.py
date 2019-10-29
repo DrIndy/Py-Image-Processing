@@ -25,8 +25,9 @@ Contributor:    Kai Wilson, login@purdue
 '''
 from ImgFilters import ImgFltr # File by Mattew Glimcher
 from ToGrayscale import Grey # File by Kai Wilson
+from Rotate_and_Mirror import rot, mirr # File by Chase Weinstine
 from numpy import ndarray
-from Rotate_and_Mirror import rot, mirr
+
 import cv2
 
 choice = 1 #makes sure that chosing an immage is the first part of the program
