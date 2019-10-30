@@ -6,14 +6,14 @@ ENGR 133 Program Description
 	Immage Processing Main Menu
 
 Assignment Information
-	Assignment:     Py1_ACT Check for Understanding
+	Assignment:     Python Project
 	Author:         Matthew Glimcher, mglimche@purdue.edu
 	Team ID:        004-01 (e.g. 001-14 for section 1 team 14)
 	
 Contributor:    Kai Wilson, login@purdue
                 Chase Weinstien, login@purdue.edu
 	My contributor(s) helped me:
-	[] understand the assignment expectations without
+	[x] understand the assignment expectations without
 		telling me how they will approach it.
 	[x] understand different ways to think about a solution
 		without helping me plan my solution.
@@ -35,7 +35,7 @@ while True: #Loops thorugh the menu for multiple opperations until the image is 
     if choice == 1: # Pick an Image
         img = cv2.imread(input("Enter the file name of the image to be procesed:\n"),1)
         if type(img) != ndarray: #check to make sure you actualy got an immage
-            print("\nError: File Does Not Exist\n")
+            print("\nError: File Does Not Exist")
             if input("End program? ([y/n]) ") == "y": break
             continue # go back to the top and try again
     elif choice == 2: # Convert to Greyscale, nothing fancy here
@@ -64,7 +64,7 @@ while True: #Loops thorugh the menu for multiple opperations until the image is 
                 break
             except: print("\nPlease enter a number")
         if f == 1: fltr = [4,9,4,9,36,9,4,9,4] # Gausian Smoothing Filter
-        elif f == 2: fltr = [0,-1,0,-1,5,-1,0,-1,0] # Sharpening Filter
+        elif f == 2: fltr = [0,-1,0,-1,12,-1,0,-1,0] # Sharpening Filter
         elif f == 3: fltr = [-1,0,1,-2,0,2,1,0,1] # Vertical Derivative Filter
         elif f == 4: fltr = [-1,-2,-1,0,0,0,1,2,1] # Horizontal Derivative Filter
         else: 

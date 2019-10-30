@@ -6,7 +6,7 @@ ENGR 133 Program Description
 	Immage Processing, filters
 
 Assignment Information
-	Assignment:     Py1_ACT Check for Understanding
+	Assignment:     Python Project
 	Author:         Matthew Glimcher, mglimche@purdue.edu
 	Team ID:        004-01 (e.g. 001-14 for section 1 team 14)
 	
@@ -52,7 +52,7 @@ def ImgFltr(img, fltr):
 '''
 Vertical Derivative     = [-1,-2,-1, 0, 0, 0, 1, 2, 1]
 Horizontal Derivative   = [-1, 0, 1,-2, 0, 2, 1, 0, 1]
-Sharpen                 = [ 0,-1, 0,-1, 15,-1, 0,-1, 0]
+Sharpen                 = [ 0,-1, 0,-1, 12,-1, 0,-1, 0]
 Smooth                  = [ 4, 9, 4, 9,36, 9, 4, 9, 4]
 
 ===============================================================================

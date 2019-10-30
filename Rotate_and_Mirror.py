@@ -22,7 +22,7 @@ Contributor:    Name, login@purdue [repeat for each]
 	have to list that person as a contributor here as well.
 ===============================================================================
 '''
-import cv2
+
 import numpy as np
 
 def rot(img):
@@ -40,25 +40,14 @@ def mirr(img):
    return nwImg
 
 '''
-img = input("WHAT IMAGE DO YOU WISH TO DISTORT? ")
-final = input("WHAT IS THE NEW NAME OF THINE CREATION WITH EXTENTION? ")
-Distortion = input("DO YOU WISH TO MIRROR OR ROTATE YOUR IMAGE? ").lower()
-image = cv2.imread(img, 1) #reads the image
-
-if Distortion == "rotate": #checks to see if the user wants to rotate or mirror and this runs if it is mirrored
-    Degree = int(input("HOW FAR DO YOU WISH TO ROTATE THINE IMAGE IN DEGREES? "))
-    if Degree == 90: image = rot(image) #rotates the image 90 degrees
-    elif Degree == 180: image = rot(rot(image)) #rotates the image 180 degrees
-    elif Degree == 270: image = rot(rot(rot(image))) #rotates the image 270 degrees
-    
-elif Distortion == "mirror":
-    image = mirr(image) #runs the mirror function
-
-else:
-    print("THIS COMMAND IS NOT RECOGNIZED") #runs if anything else is inputed for distortion
-cv2.imwrite(final, image) #writes the new image
+===============================================================================
+ACADEMIC INTEGRITY STATEMENT
+    I have not used source code obtained from any other unauthorized
+    source, either modified or unmodified. Neither have I provided
+    access to my code to another. The project I am submitting
+    is my own original work.
+===============================================================================
 '''
-
     
             
     
