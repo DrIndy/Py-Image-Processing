@@ -3,14 +3,14 @@
 '''
 ===============================================================================
 ENGR 133 Program Description 
-	replace this text with your program description as a comment
+	Can take in an array of an image and rotate or mirror the image
 
 Assignment Information
 	Assignment:     Python Project
 	Author:         Chase Weinstein, cweinste@purdue.edu
-	Team ID:        ###-## (e.g. 001-14 for section 1 team 14)
+	Team ID:        004-01 (e.g. 001-14 for section 1 team 14)
 	
-Contributor:    Name, login@purdue [repeat for each]
+Contributor:    
 	My contributor(s) helped me:	
 	[ ] understand the assignment expectations without
 		telling me how they will approach it.
