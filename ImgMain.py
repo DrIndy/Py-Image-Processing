@@ -33,21 +33,21 @@ import cv2
 choice = 1 #makes sure that chosing an immage is the first part of the program
 while True: #Loops thorugh the menu for multiple opperations until the image is writen to a file
     if choice == 1: # Pick an Image
-        img = cv2.imread(input("Enter the file name of the image to be procesed:\n"),1)
+        img = cv2.imread(input("Enter the file name of the image to be processed:\n"),1)
         if type(img) != ndarray: #check to make sure you actualy got an immage
             print("\nError: File Does Not Exist")
             if input("End program? ([y/n]) ") == "y": break
             continue # go back to the top and try again
     elif choice == 2: # Convert to Greyscale, nothing fancy here
         img = Grey(img)
-        print("\nImage Conveted to Greyscale\n") # confirms the image was converted to greyscale
+        print("\nImage Conveted to Grayscale\n") # confirms the image was converted to greyscale
     elif choice == 3: # Rotates the image
-        print("How many Degrees counterclockwise should the image be rotated?\n")
+        print("How many degrees counterclockwise should the image be rotated?\n")
         while True:
             try:
                 r = round(int(input())/90)%4 # Take an input in degrees and records the numbe of 90 degree rotations required
                 break
-            except: print("\nPlease enter a number")
+            except: print("\nPlease enter a number:")
         #takes a rotation value and rounds in case you hit a nearby key by accident
         if r == 1: img = rot(img)
         elif r == 2: img = rot(rot(img))
