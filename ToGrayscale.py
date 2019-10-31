@@ -28,7 +28,7 @@ def Grey(image): #Begins definition for the function to turn an image to grey sc
     greyscale = np.zeros((image.shape[0],image.shape[1])) #Finds the shape of the array
     for i in range(0,image.shape[0]): #Loops through each row in the array
         for j in range(0,image.shape[1]): #Loops through each pixel in the row
-            greyscale[i][j] = ((image[i][j][0]*.7)+(image[i][j][1]*.1)+(image[i][j][2]*.6))//1.5 #Takes a weighted average of the each color in the selected pixel to make it grayscale
+            greyscale[i][j] = ((image[i][j][0]*.11)+(image[i][j][1]*.59)+(image[i][j][2]*.3))  #Takes a weighted average of the each color in the selected pixel to make it grayscale
     return greyscale #Returns the final value
 
 '''
