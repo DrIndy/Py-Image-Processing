@@ -10,7 +10,7 @@ Assignment Information
 	Author:         Matthew Glimcher, mglimche@purdue.edu
 	Team ID:        004-01 (e.g. 001-14 for section 1 team 14)
 	
-Contributor:    Name, login@purdue [repeat for each]
+Contributor:    
 	My contributor(s) helped me:	
 	[] understand the assignment expectations without
 		telling me how they will approach it.
